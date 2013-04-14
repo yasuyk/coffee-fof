@@ -31,10 +31,21 @@
 ;;
 ;; Find the CoffeeScript or JavaScript file corresponding to this file.
 ;;
+;;
 ;; Requirements:
 ;;
 ;; * `coffee-mode'
 ;; * `js-mode', `js2-mode' or `js3-mode'
+;;
+;;
+;; Usage:
+;;
+;; * coffee-find-other-file: `C-c f'
+;;
+;;   Find the CoffeeScript or JavaScript file corresponding to this
+;;   file.  This command is enabled in `coffee-mode', `js-mode',
+;;   `js2-mode', `js3-mode'.
+;;
 ;;
 ;; Configuration:
 ;;
@@ -63,16 +74,9 @@
 ;;      '(coffee-fof-search-directories
 ;;       '("." "../*")))
 ;;
-;; Usage:
-;
-;; * coffee-find-other-file: `C-c f'
+;; If you want to set another key binding, configure as follow.
 ;;
-;;   Find the CoffeeScript or JavaScript file corresponding to this
-;;   file.  This command is enabled in `coffee-mode', `js-mode',
-;;   `js2-mode', `js3-mode'.
-;;
-;;   If you want to set another key binding, configure as follow.
-;;   (coffee-fof-setup-key ('kbd "C-c C-f"))
+;;     (coffee-fof-setup-key ('kbd "C-c C-f"))
 ;;
 ;;
 
