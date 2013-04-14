@@ -76,7 +76,7 @@
 ;;
 ;; If you want to set another key binding, configure as follow.
 ;;
-;;     (coffee-fof-setup-key ('kbd "C-c C-f"))
+;;     (coffee-fof-setup-key (kbd "C-c C-f"))
 ;;
 ;;
 
