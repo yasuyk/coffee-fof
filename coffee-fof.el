@@ -104,10 +104,6 @@
   (kbd "C-c f")
   "A local binding Key as `coffee-find-other-file' commmand.")
 
-(defvar coffee-fof-javascript-modes
-  '(js-mode js2-mode js3-mode)
-  "Javascript mode list.")
-
 ;;;###autoload
 (defun coffee-find-other-file (&optional in-other-window)
   "Find the CoffeeScript or JavaScript file corresponding to this file.
