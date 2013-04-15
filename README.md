@@ -27,7 +27,7 @@ corresponding to this file.  This command is enabled in `coffee-mode`,
 
 ## Configuration
 
-Add the following to your Emacs init file unless using ELPA package:
+Add the following to your Emacs init file:
 
 ```elisp
 (require 'coffee-fof) ;; Not necessary if using ELPA package

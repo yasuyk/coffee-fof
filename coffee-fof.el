@@ -49,7 +49,7 @@
 ;;
 ;; Configuration:
 ;;
-;; Add the following to your Emacs init file unless using ELPA package:
+;; Add the following to your Emacs init file:
 ;;
 ;;     (require 'coffee-fof) ;; Not necessary if using ELPA package
 ;;     (coffee-fof-setup-key)
