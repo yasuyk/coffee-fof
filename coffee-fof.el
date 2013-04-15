@@ -3,7 +3,7 @@
 
 ;; Author: Yasuyki Oka <yasuyk@gmail.com>
 ;; Keywords: coffee-mode
-;; Version: 0.0.1
+;; Version: 0.0.2
 ;; Package-Requires: ((coffee-mode "0.4.1"))
 ;; URL: http://github.com/yasuyk/coffee-fof
 
