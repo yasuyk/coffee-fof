@@ -4,7 +4,8 @@
 
 A `ff-find-other-file` wrapper for coffee-mode.el.
 
-Find the CoffeeScript or JavaScript file corresponding to this file.
+- You can find the CoffeeScript or JavaScript file corresponding to this file.
+- You can find the CoffeeScrpt/JavaScript or test/spec file corresponding to this file.
 
 ## Requirements
 
@@ -24,6 +25,12 @@ You can install `coffee-fof.el` from [MELPA](https://github.com/milkypostman/mel
 (using <kbd>C-c f</kbd>) Find the CoffeeScript or JavaScript file
 corresponding to this file.  This command is enabled in `coffee-mode`,
 `js-mode`, `js2-mode`, `js3-mode`.
+
+### `coffee-find-test-file`
+
+(using <kbd>C-c s</kbd>) Find the CoffeeScript/JavaScript or test/spec
+file corresponding to this file.  This command is enabled in
+`coffee-mode`, `js-mode`, `js2-mode`, `js3-mode`.
 
 ## Configuration
 
@@ -54,4 +61,5 @@ customize `coffee-fof-search-directories`.
 
 If you want to set another key binding, configure as follow.
 
-    (coffee-fof-setup (kbd "C-c C-f"))
+    (coffee-fof-setup :other-key (kbd "C-c C-f")
+                      :test-key (kbd "C-c t"))

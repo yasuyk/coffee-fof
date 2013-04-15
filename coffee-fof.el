@@ -29,7 +29,9 @@
 ;;
 ;; A `ff-find-other-file' wrapper for coffee-mode.el.
 ;;
-;; Find the CoffeeScript or JavaScript file corresponding to this file.
+;; * You can find the CoffeeScript or JavaScript file corresponding to
+;; * this file.  You can find the CoffeeScrpt/JavaScript or test/spec
+;; * file corresponding to this file.
 ;;
 ;;
 ;; Requirements:
@@ -76,7 +78,8 @@
 ;;
 ;; If you want to set another key binding, configure as follow.
 ;;
-;;     (coffee-fof-setup (kbd "C-c C-f"))
+;;     (coffee-fof-setup :other-key (kbd "C-c C-f")
+;;                       :test-key (kbd "C-c t"))
 ;;
 ;;
 
@@ -138,7 +141,7 @@ For more Information, See `ff-find-other-file' function."
 
 ;;;###autoload
 (defun coffee-find-test-file (&optional in-other-window)
-  "Find the CoffeeScript or test/spec file corresponding to this file.
+  "Find the CoffeeScrpt/JavaScript or test file corresponding to this file.
 
 If optional IN-OTHER-WINDOW is non-nil, find the file in the other window.
 For more Information, See `ff-find-other-file' function."
@@ -148,7 +151,12 @@ For more Information, See `ff-find-other-file' function."
     (call-interactively 'ff-find-other-file)))
 
 (defun coffee-fof-set-keys ()
-  "Give `coffee-find-other-file-key' a local binding as `coffee-find-other-file'."
+  "Bind keys.
+
+Give `coffee-find-other-file-key' a local binding as
+`coffee-find-other-file'.
+Give `coffee-find-test-file-key' a local binding as
+`coffee-find-test-file'."
   (local-set-key coffee-find-other-file-key 'coffee-find-other-file)
   (local-set-key coffee-find-test-file-key 'coffee-find-test-file))
 
@@ -159,9 +167,22 @@ For more Information, See `ff-find-other-file' function."
 (defun coffee-fof-setup (&rest plist)
   "Setup coffee-fof.
 
-Give KEY a local binding as `coffee-find-other-file'
+Keywords supported:
+:other-key :test-key
+
+PLIST is a list like \(:key1 val1 :key2 val2 ...\).
+
+Basic keywords are the following:
+
+\:other-key
+
+Give key a local binding as `coffee-find-other-file'
 in `js-mode-map', `js2-mode-map', `js3-mode-map' and `coffee-mode-map'.
-PLIST is a list like \(:key1 val1 :key2 val2 ...\)."
+
+\:test-key
+
+Give key a local binding as `coffee-find-test-file'
+in `js-mode-map', `js2-mode-map', `js3-mode-map' and `coffee-mode-map'."
   (let ((okey (plist-get plist :other-key))
         (tkey (plist-get plist :test-key)))
     (when okey (setq coffee-find-other-file-key okey))
