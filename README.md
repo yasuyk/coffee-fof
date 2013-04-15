@@ -31,7 +31,7 @@ Add the following to your Emacs init file:
 
 ```elisp
 (require 'coffee-fof) ;; Not necessary if using ELPA package
-(coffee-fof-setup-key)
+(coffee-fof-setup)
 ```
 
 If the .coffee files and .js files are in the same directory, a configuration is not necessary as default value of coffee-fof-search-directories is '(".").
@@ -54,4 +54,4 @@ customize `coffee-fof-search-directories`.
 
 If you want to set another key binding, configure as follow.
 
-    (coffee-fof-setup-key (kbd "C-c C-f"))
+    (coffee-fof-setup (kbd "C-c C-f"))

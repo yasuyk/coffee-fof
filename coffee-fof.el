@@ -52,7 +52,7 @@
 ;; Add the following to your Emacs init file:
 ;;
 ;;     (require 'coffee-fof) ;; Not necessary if using ELPA package
-;;     (coffee-fof-setup-key)
+;;     (coffee-fof-setup)
 ;;
 ;; If the .coffee files and .js files are in the same directory, a
 ;; configuration is not necessary as default value of
@@ -76,7 +76,7 @@
 ;;
 ;; If you want to set another key binding, configure as follow.
 ;;
-;;     (coffee-fof-setup-key (kbd "C-c C-f"))
+;;     (coffee-fof-setup (kbd "C-c C-f"))
 ;;
 ;;
 
@@ -104,6 +104,27 @@
   (kbd "C-c f")
   "A local binding Key as `coffee-find-other-file' commmand.")
 
+(defcustom coffee-fof-test-file-alist
+  '(("[sS]pec\\.coffee$" (".coffee"))
+    ("[tT]est\\.coffee$" (".coffee"))
+    ("\\.coffee$" ("Spec.coffee" "spec.coffee" "Test.coffee" "test.coffee"))
+    ("[sS]pec\\.js$" (".js"))
+    ("[tT]est\\.js$" (".js"))
+    ("\\.js$" ("Spec.js" "spec.js" "Test.js" "test.js")))
+  "See the description of the `ff-other-file-alist' variable."
+  :type '(repeat (list regexp (choice (repeat string) function)))
+  :group 'coffee-fof)
+
+(defcustom coffee-fof-test-search-directories
+  '(".")
+  "See the description of the `ff-search-directories' variable."
+  :type '(repeat directory)
+  :group 'coffee-fof)
+
+(defvar coffee-find-test-file-key
+  (kbd "C-c s")
+  "A local binding Key as `coffee-find-test-file' commmand.")
+
 ;;;###autoload
 (defun coffee-find-other-file (&optional in-other-window)
   "Find the CoffeeScript or JavaScript file corresponding to this file.
@@ -113,23 +134,42 @@ For more Information, See `ff-find-other-file' function."
   (interactive "P")
   (let ((ff-other-file-alist coffee-fof-other-file-alist)
         (ff-search-directories coffee-fof-search-directories))
-  (call-interactively 'ff-find-other-file)))
-
-(defun coffee-fof-set-key ()
-  "Give `coffee-find-other-file-key' a local binding as `coffee-find-other-file'."
-  (local-set-key coffee-find-other-file-key 'coffee-find-other-file))
+    (call-interactively 'ff-find-other-file)))
 
 ;;;###autoload
-(defun coffee-fof-setup-key (&optional key)
-  "Give KEY a local binding as `coffee-find-other-file'.
+(defun coffee-find-test-file (&optional in-other-window)
+  "Find the CoffeeScript or test/spec file corresponding to this file.
 
-in `js-mode-map', `js2-mode-map', `js3-mode-map' and `coffee-mode-map'."
-  (when key
-    (setq coffee-find-other-file-key key))
-  (add-hook 'js-mode-hook 'coffee-fof-set-key)
-  (add-hook 'js2-mode-hook 'coffee-fof-set-key)
-  (add-hook 'js3-mode-hook 'coffee-fof-set-key)
-  (add-hook 'coffee-mode-hook 'coffee-fof-set-key))
+If optional IN-OTHER-WINDOW is non-nil, find the file in the other window.
+For more Information, See `ff-find-other-file' function."
+  (interactive "P")
+  (let ((ff-other-file-alist coffee-fof-test-file-alist)
+        (ff-search-directories coffee-fof-test-search-directories))
+    (call-interactively 'ff-find-other-file)))
+
+(defun coffee-fof-set-keys ()
+  "Give `coffee-find-other-file-key' a local binding as `coffee-find-other-file'."
+  (local-set-key coffee-find-other-file-key 'coffee-find-other-file)
+  (local-set-key coffee-find-test-file-key 'coffee-find-test-file))
+
+(defconst coffee-fof-setup-argument-keys
+  '(:other-key :test-key))
+
+;;;###autoload
+(defun coffee-fof-setup (&rest plist)
+  "Setup coffee-fof.
+
+Give KEY a local binding as `coffee-find-other-file'
+in `js-mode-map', `js2-mode-map', `js3-mode-map' and `coffee-mode-map'.
+PLIST is a list like \(:key1 val1 :key2 val2 ...\)."
+  (let ((okey (plist-get plist :other-key))
+        (tkey (plist-get plist :test-key)))
+    (when okey (setq coffee-find-other-file-key okey))
+    (when tkey (setq coffee-find-test-file-key tkey))
+    (add-hook 'js-mode-hook 'coffee-fof-set-keys)
+    (add-hook 'js2-mode-hook 'coffee-fof-set-keys)
+    (add-hook 'js3-mode-hook 'coffee-fof-set-keys)
+    (add-hook 'coffee-mode-hook 'coffee-fof-set-keys)))
 
 (provide 'coffee-fof)
 
