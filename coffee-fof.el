@@ -49,6 +49,12 @@
 ;;   file.  This command is enabled in `coffee-mode', `js-mode',
 ;;   `js2-mode', `js3-mode'.
 ;;
+;; * coffee-find-test-file: `C-c s'
+;;
+;;   Find the CoffeeScript/JavaScript or test/spec file corresponding
+;;   to this file.  This command is enabled in `coffee-mode`,
+;;   `js-mode`, `js2-mode`, `js3-mode`.
+;;
 ;;
 ;; Configuration:
 ;;
