@@ -61,5 +61,4 @@ customize `coffee-fof-search-directories`.
 
 If you want to set another key binding, configure as follow.
 
-    (coffee-fof-setup :other-key (kbd "C-c C-f")
-                      :test-key (kbd "C-c t"))
+    (coffee-fof-setup :other-key "C-c C-f" :test-key "C-c t")

@@ -85,8 +85,7 @@
 ;;
 ;; If you want to set another key binding, configure as follow.
 ;;
-;;     (coffee-fof-setup :other-key (kbd "C-c C-f")
-;;                       :test-key (kbd "C-c t"))
+;;     (coffee-fof-setup :other-key "C-c C-f" :test-key "C-c t")
 ;;
 ;;
 
@@ -110,8 +109,7 @@
   :type '(repeat directory)
   :group 'coffee-fof)
 
-(defvar coffee-find-other-file-key
-  (kbd "C-c f")
+(defvar coffee-find-other-file-key "C-c f"
   "A local binding Key as `coffee-find-other-file' commmand.")
 
 (defcustom coffee-fof-test-file-alist
@@ -131,8 +129,7 @@
   :type '(repeat directory)
   :group 'coffee-fof)
 
-(defvar coffee-find-test-file-key
-  (kbd "C-c s")
+(defvar coffee-find-test-file-key "C-c s"
   "A local binding Key as `coffee-find-test-file' commmand.")
 
 ;;;###autoload
@@ -164,8 +161,8 @@ Give `coffee-find-other-file-key' a local binding as
 `coffee-find-other-file'.
 Give `coffee-find-test-file-key' a local binding as
 `coffee-find-test-file'."
-  (local-set-key coffee-find-other-file-key 'coffee-find-other-file)
-  (local-set-key coffee-find-test-file-key 'coffee-find-test-file))
+  (local-set-key (kbd coffee-find-other-file-key) 'coffee-find-other-file)
+  (local-set-key (kbd coffee-find-test-file-key) 'coffee-find-test-file))
 
 (defconst coffee-fof-setup-argument-keys
   '(:other-key :test-key))
