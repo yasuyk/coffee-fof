@@ -1,4 +1,4 @@
-;;; coffee-fof.el --- A `ff-find-other-file' wrapper for coffee-mode.el
+;;; coffee-fof.el --- A coffee-mode configuration for `ff-find-other-file'.
 ;; Copyright (C) 2013 Yasuyki Oka
 
 ;; Author: Yasuyki Oka <yasuyk@gmail.com>
