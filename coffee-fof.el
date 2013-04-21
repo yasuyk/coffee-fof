@@ -27,7 +27,7 @@
 ;;
 ;; Introduction:
 ;;
-;; A `ff-find-other-file' wrapper for coffee-mode.el.
+;; A coffee-mode configuration for `ff-find-other-file'.
 ;;
 ;; * You can find the CoffeeScript or JavaScript file corresponding to
 ;;   this file.
