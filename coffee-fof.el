@@ -161,8 +161,8 @@ Give `coffee-find-other-file-key' a local binding as
 `coffee-find-other-file'.
 Give `coffee-find-test-file-key' a local binding as
 `coffee-find-test-file'."
-  (local-set-key (kbd coffee-find-other-file-key) 'coffee-find-other-file)
-  (local-set-key (kbd coffee-find-test-file-key) 'coffee-find-test-file))
+  (local-set-key (read-kbd-macro coffee-find-other-file-key) 'coffee-find-other-file)
+  (local-set-key (read-kbd-macro coffee-find-test-file-key) 'coffee-find-test-file))
 
 (defconst coffee-fof-setup-argument-keys
   '(:other-key :test-key))
