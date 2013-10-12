@@ -3,7 +3,7 @@
 
 ;; Author: Yasuyki Oka <yasuyk@gmail.com>
 ;; Keywords: coffee-mode
-;; Version: 0.0.2
+;; Version: DEV
 ;; Package-Requires: ((coffee-mode "0.4.1"))
 ;; URL: http://github.com/yasuyk/coffee-fof
 
@@ -112,13 +112,30 @@
 (defvar coffee-find-other-file-key "C-c f"
   "A local binding Key as `coffee-find-other-file' commmand.")
 
+(defcustom coffee-fof-test-coffee-file-name-list
+  '("_spec.coffee" "_test.coffee" "_Spec.coffee" "_Test.coffee"
+    "Spec.coffee" "Test.coffee" "spec.coffee" "test.coffee")
+  "List of name suffix of CoffeeScript test file corresponding to CoffeeScript file."
+  :type '(repeat string)
+  :group 'coffee-fof)
+
+(defcustom coffee-fof-test-js-file-name-list
+  '("_spec.js" "_test.js"  "_Spec.js" "_Test.js" "Spec.js" "Test.js" "spec.js" "test.js")
+  "List of name suffix of JavaScript test file corresponding to JavaScript file."
+  :type '(repeat string)
+  :group 'coffee-fof)
+
 (defcustom coffee-fof-test-file-alist
-  '(("[sS]pec\\.coffee$" (".coffee"))
+  `(("_[sS]pec\\.coffee$" (".coffee"))
+    ("_[tT]est\\.coffee$" (".coffee"))
+    ("[sS]pec\\.coffee$" (".coffee"))
     ("[tT]est\\.coffee$" (".coffee"))
-    ("\\.coffee$" ("Spec.coffee" "spec.coffee" "Test.coffee" "test.coffee"))
+    ("\\.coffee$" ,coffee-fof-test-coffee-file-name-list)
+    ("_[sS]pec\\.js$" (".js"))
+    ("_[tT]est\\.js$" (".js"))
     ("[sS]pec\\.js$" (".js"))
     ("[tT]est\\.js$" (".js"))
-    ("\\.js$" ("Spec.js" "spec.js" "Test.js" "test.js")))
+    ("\\.js$" ,coffee-fof-test-js-file-name-list))
   "See the description of the `ff-other-file-alist' variable."
   :type '(repeat (list regexp (choice (repeat string) function)))
   :group 'coffee-fof)
